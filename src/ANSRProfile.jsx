@@ -587,7 +587,7 @@ export default function ANSRProfile() {
   useEffect(() => {
     if (scr === "results" && prof && sec && scores) {
       sendWebhook({ prof, sec, sensory: sensoryType, scores });
-    }if(window.fbq)fbq('track','Purchase',{value:97.00,currency:'EUR'});
+    if(window.fbq)fbq('track','Purchase',{value:97.00,currency:'EUR'});
   }, [scr, prof, sec, scores, sensoryType, sendWebhook]);
 
   // ═══════════════════════════════════════
