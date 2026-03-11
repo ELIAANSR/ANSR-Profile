@@ -579,6 +579,7 @@ export default function ANSRProfile() {
         method: "POST", body: new URLSearchParams(payload).toString(),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       }).catch(() => {});
+      fetch("https://web-production-305eb4.up.railway.app/generate-and-send", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({name: userName, email: email, primary: profileData.prof.key, secondary: profileData.sec.key, sensory: profileData.sensory, scores: profileData.scores, token: token})}).catch(() => {});
     } catch (e) {}
   }, [userName]);
 
