@@ -386,23 +386,13 @@ function ProfileDelivery() {
           ))}
         </div>
  
-        {/* Download */}
-        <a href={`${PDF_BASE_URL}?name=${encodeURIComponent(userName)}&p=${params.p}`}
-          style={{
-            display: "inline-block", fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 16, letterSpacing: "0.12em", textTransform: "uppercase",
-            background: c, color: "#FFFFFF", padding: "18px 48px",
-            textDecoration: "none", cursor: "pointer", transition: "all 0.3s ease",
-            borderRadius: 2, boxShadow: `0 4px 24px ${primary.colorSoft}`,
-            marginBottom: 16, textAlign: "center",
-          }}
-          onMouseEnter={(e) => { e.target.style.boxShadow = `0 8px 36px ${primary.colorSoft}`; e.target.style.transform = "translateY(-1px)"; }}
-          onMouseLeave={(e) => { e.target.style.boxShadow = `0 4px 24px ${primary.colorSoft}`; e.target.style.transform = "translateY(0)"; }}>
-          Open your ANSR Profile
-        </a>
- 
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#9B9590", letterSpacing: "0.04em", marginBottom: 44, textAlign: "center" }}>
-          14-page PDF · Also sent to your email</p>
+        {/* Download — PDF is attached to her email */}
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, letterSpacing: "0.08em",
+          color: c, marginBottom: 8, textAlign: "center" }}>
+          Your 14-page report is attached to the email that brought you here.</p>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#9B9590",
+          letterSpacing: "0.04em", marginBottom: 44, textAlign: "center" }}>
+          Open the attachment · Save it · Print it if you can</p>
  
         {/* Debrief */}
         <div style={{ maxWidth: 440, textAlign: "center", marginBottom: 80 }}>
@@ -450,4 +440,3 @@ export default function App() {
   const isDelivery = typeof window !== "undefined" && window.location.pathname.includes("delivery");
   return isDelivery ? <ProfileDelivery /> : <ProfileLP />;
 }
- 
