@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/delivery", "destination": "/" },
+    { "source": "/assessment", "destination": "/" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }
