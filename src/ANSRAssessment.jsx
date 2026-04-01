@@ -522,15 +522,26 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* WELCOME */}
+        {/* WELCOME — The Aman lobby moment */}
         {!accessDenied && scr === "welcome" && (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px", animation: "fadeIn 1.2s ease" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px", animation: "fadeIn 1.8s ease" }}>
             <div style={{ textAlign: "center", maxWidth: 480 }}>
-              <p style={{ fontFamily: T.f.d, fontSize: 34, fontWeight: 400, color: T.text, letterSpacing: "0.35em", marginBottom: 48 }}>ELIA</p>
-              <div style={{ width: 44, height: 1, background: T.accent, margin: "0 auto 44px", opacity: 0.6 }} />
-              <p style={{ fontFamily: T.f.d, fontSize: 21, fontWeight: 300, color: T.text, lineHeight: 1.6, letterSpacing: "0.04em", marginBottom: 12 }}>Your ANSR Profile</p>
-              <p style={{ fontFamily: T.f.b, fontSize: 16, color: T.textMuted, lineHeight: 1.7, marginBottom: 64 }}>42 questions · 6 dimensions · ~12 minutes</p>
-              <button onClick={() => setScr("intention")} style={{ fontFamily: T.f.d, fontSize: 16, letterSpacing: "0.15em", background: "transparent", border: `1px solid ${T.accent}`, color: T.accent, padding: "16px 48px", cursor: "pointer", borderRadius: 2 }}>Begin</button>
+              {/* Orbit motif */}
+              <div style={{ position: "relative", width: 120, height: 120, margin: "0 auto 48px" }}>
+                <div style={{ position: "absolute", inset: 0, borderRadius: "50%", border: `1px solid ${T.accent}`, opacity: 0.15 }} />
+                <div style={{ position: "absolute", inset: "18%", borderRadius: "50%", border: `1px solid ${T.accent}`, opacity: 0.25 }} />
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 6, height: 6, borderRadius: "50%", background: T.accent, opacity: 0.5 }} />
+              </div>
+              <p style={{ fontFamily: T.f.d, fontSize: 42, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.4em", marginBottom: 20 }}>ELIA</p>
+              <p style={{ fontFamily: T.f.b, fontSize: 14, color: T.accent, letterSpacing: "0.15em", fontStyle: "italic", marginBottom: 56 }}>Beauty That Heals</p>
+              <div style={{ width: 48, height: 1, background: T.accent, margin: "0 auto 56px", opacity: 0.4 }} />
+              <p style={{ fontFamily: T.f.d, fontSize: 26, fontWeight: 300, color: "#F0E8DC", lineHeight: 1.5, letterSpacing: "0.04em", marginBottom: 12 }}>Your ANSR Profile</p>
+              <p style={{ fontFamily: T.f.b, fontSize: 15, color: T.textMuted, lineHeight: 1.7, marginBottom: 56 }}>42 questions across six dimensions</p>
+              {userName && <p style={{ fontFamily: T.f.d, fontSize: 16, color: T.accent, letterSpacing: "0.12em", marginBottom: 48, opacity: 0.7 }}>Prepared for {userName.split(" ")[0]}</p>}
+              <button onClick={() => setScr("intention")} style={{ fontFamily: T.f.d, fontSize: 16, letterSpacing: "0.15em", background: T.warmWhite, border: "none", color: T.warmCharcoal, padding: "18px 56px", cursor: "pointer", borderRadius: 2, transition: "all 0.4s ease" }}
+                onMouseEnter={(e) => { e.target.style.background = "#FFFFFF"; }}
+                onMouseLeave={(e) => { e.target.style.background = T.warmWhite; }}>Begin</button>
+              <p style={{ fontFamily: T.f.ui, fontSize: 11, color: T.textDim, marginTop: 24, letterSpacing: "0.04em" }}>~12 minutes · Your progress saves automatically</p>
             </div>
           </div>
         )}
@@ -539,13 +550,13 @@ export default function ANSRAssessment() {
         {scr === "intention" && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 460 }}>
-              <p style={{ fontFamily: T.f.d, fontSize: 28, fontWeight: 400, color: T.text, letterSpacing: "0.35em", marginBottom: 48, opacity: 0.55 }}>ELIA</p>
-              <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 48px", opacity: 0.3 }} />
-              <p style={{ fontFamily: T.f.d, fontSize: 26, fontWeight: 300, color: T.text, lineHeight: 1.7, marginBottom: 20 }}>Find a place that feels good.</p>
+              <p style={{ fontFamily: T.f.d, fontSize: 32, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", marginBottom: 56 }}>ELIA</p>
+              <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 48px", opacity: 0.35 }} />
+              <p style={{ fontFamily: T.f.d, fontSize: 26, fontWeight: 300, color: "#F0E8DC", lineHeight: 1.7, marginBottom: 20 }}>Find a place that feels good.</p>
               <p style={{ fontFamily: T.f.b, fontSize: 16, color: T.textMuted, lineHeight: 2.0, marginBottom: 12 }}>This assessment works best when your body is comfortable</p>
               <p style={{ fontFamily: T.f.b, fontSize: 16, color: T.textMuted, lineHeight: 2.0, marginBottom: 56 }}>and your phone is the only screen.</p>
               <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 48px", opacity: 0.15 }} />
-              <button onClick={() => setScr("chcard")} style={{ fontFamily: T.f.d, fontSize: 15, letterSpacing: "0.12em", color: T.warmCharcoal, background: T.warmWhite, border: "none", cursor: "pointer", padding: "13px 36px", borderRadius: 6 }}>I'm ready</button>
+              <button onClick={() => setScr("chcard")} style={{ fontFamily: T.f.d, fontSize: 15, letterSpacing: "0.12em", color: T.warmCharcoal, background: T.warmWhite, border: "none", cursor: "pointer", padding: "15px 44px", borderRadius: 2 }}>I'm ready</button>
             </div>
           </div>
         )}
@@ -554,7 +565,7 @@ export default function ANSRAssessment() {
         {scr === "chcard" && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 480 }}>
-              <p style={{ fontFamily: T.f.d, fontSize: 28, fontWeight: 400, color: T.text, letterSpacing: "0.35em", marginBottom: 32, opacity: 0.5 }}>ELIA</p>
+              <p style={{ fontFamily: T.f.d, fontSize: 30, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", marginBottom: 32 }}>ELIA</p>
               <p style={{ fontFamily: T.f.ui, fontSize: 12, color: T.accent, letterSpacing: "0.2em", marginBottom: 24 }}>Chapter {ch + 1} of 6</p>
               <p style={{ fontFamily: T.f.d, fontSize: 44, fontWeight: 300, color: T.text, letterSpacing: "0.06em", marginBottom: 28 }}>{CH[ch].name}</p>
               <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 32px", opacity: 0.3 }} />
@@ -570,15 +581,15 @@ export default function ANSRAssessment() {
           const order = shuffledOrders[globalIdx] || curQ.o.map((_, i) => i);
           return (
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "100vh", padding: curQ.final ? "60px 24px" : "48px 24px", maxWidth: 580, margin: "0 auto" }}>
-            {/* ELIA logo — ivory, slightly larger */}
-            <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", textAlign: "center", marginBottom: 32, opacity: 0.65 }}>ELIA</p>
-            {/* Chapter counter — ivory */}
+            {/* ELIA logo — prominent, ivory */}
+            <p style={{ fontFamily: T.f.d, fontSize: 28, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", textAlign: "center", marginBottom: 32 }}>ELIA</p>
+            {/* Chapter counter — visible ivory */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 {cqi > 0 && (<button onClick={onBack} style={{ background: "none", border: "none", color: T.textDim, cursor: "pointer", fontFamily: T.f.b, fontSize: 13, padding: "4px 0", transition: "color 0.3s ease" }} onMouseEnter={(e) => { e.target.style.color = T.accent; }} onMouseLeave={(e) => { e.target.style.color = T.textDim; }}>←</button>)}
                 <span style={{ fontFamily: T.f.ui, fontSize: 12, color: T.accent, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>{CH[ch].name}</span>
               </div>
-              <span style={{ fontFamily: T.f.ui, fontSize: 11, color: "#F0E8DC", letterSpacing: "0.06em", opacity: 0.5 }}>Chapter {ch + 1} of 6</span>
+              <span style={{ fontFamily: T.f.ui, fontSize: 12, color: "#F0E8DC", letterSpacing: "0.08em", opacity: 0.7 }}>Chapter {ch + 1} of 6</span>
             </div>
             {/* Progress dots within chapter */}
             <div style={{ display: "flex", gap: 6, marginBottom: 6, justifyContent: "center" }}>
