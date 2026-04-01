@@ -570,22 +570,22 @@ export default function ANSRAssessment() {
           const order = shuffledOrders[globalIdx] || curQ.o.map((_, i) => i);
           return (
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "100vh", padding: curQ.final ? "60px 24px" : "48px 24px", maxWidth: 580, margin: "0 auto" }}>
-            {/* Upgrade 1: ELIA logo — matches Pulse */}
-            <p style={{ fontFamily: T.f.d, fontSize: 20, fontWeight: 400, color: T.text, letterSpacing: "0.35em", textAlign: "center", marginBottom: 32, opacity: 0.5 }}>ELIA</p>
-            {/* Upgrade 3: Chapter counter */}
+            {/* ELIA logo — ivory, slightly larger */}
+            <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", textAlign: "center", marginBottom: 32, opacity: 0.65 }}>ELIA</p>
+            {/* Chapter counter — ivory */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 {cqi > 0 && (<button onClick={onBack} style={{ background: "none", border: "none", color: T.textDim, cursor: "pointer", fontFamily: T.f.b, fontSize: 13, padding: "4px 0", transition: "color 0.3s ease" }} onMouseEnter={(e) => { e.target.style.color = T.accent; }} onMouseLeave={(e) => { e.target.style.color = T.textDim; }}>←</button>)}
                 <span style={{ fontFamily: T.f.ui, fontSize: 12, color: T.accent, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>{CH[ch].name}</span>
               </div>
-              <span style={{ fontFamily: T.f.ui, fontSize: 11, color: T.textDim, letterSpacing: "0.06em" }}>Chapter {ch + 1} of 6</span>
+              <span style={{ fontFamily: T.f.ui, fontSize: 11, color: "#F0E8DC", letterSpacing: "0.06em", opacity: 0.5 }}>Chapter {ch + 1} of 6</span>
             </div>
-            {/* Upgrade 2: Progress dots within chapter — matches Pulse */}
+            {/* Progress dots within chapter */}
             <div style={{ display: "flex", gap: 6, marginBottom: 6, justifyContent: "center" }}>
               {Array.from({ length: chQ.length }, (_, i) => (<div key={i} style={{ width: i <= cqi ? 18 : 8, height: 2, background: i <= cqi ? T.accent : "rgba(255,255,255,0.1)", borderRadius: 1, transition: "all 0.5s ease" }} />))}
             </div>
             <h2 style={{ fontFamily: T.f.b, fontSize: curQ.final ? 26 : curQ.sensory ? 20 : 22, fontWeight: 400, color: T.text, lineHeight: 1.7, margin: curQ.final ? "36px 0 40px" : "28px 0 28px", fontStyle: "italic" }}>{curQ.t}</h2>
-            {/* Upgrade 4: DM Sans for answer buttons */}
+            {/* DM Sans answer buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: curQ.sensory ? 8 : 10 }}>
               {order.map((origIdx) => (
                 <button key={origIdx}
@@ -604,6 +604,10 @@ export default function ANSRAssessment() {
                 >{curQ.o[origIdx]}</button>
               ))}
             </div>
+            {/* Her name — quiet, personal */}
+            {userName && !curQ.final && (
+              <p style={{ fontFamily: T.f.d, fontSize: 13, color: T.accent, letterSpacing: "0.15em", textAlign: "center", marginTop: 36, opacity: 0.35 }}>{userName.split(" ")[0]}'s ANSR Profile</p>
+            )}
           </div>);
         })()}
 
