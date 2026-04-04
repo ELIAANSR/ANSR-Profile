@@ -345,6 +345,14 @@ export default function ANSRAssessment() {
     }
   }, [ch]);
 
+  // Wake up Railway at chapter 3 — container sleeps after inactivity, needs ~10s to start
+  useEffect(() => {
+    if (ch >= 3 && typeof window !== "undefined" && !window._railwayWoken) {
+      window._railwayWoken = true;
+      fetch("https://web-production-305eb4.up.railway.app/health").catch(() => {});
+    }
+  }, [ch]);
+
   const chQ = Q.filter(q => q.c === ch);
   const curQ = chQ[cqi];
   const isLast = cqi === chQ.length - 1;
@@ -390,7 +398,11 @@ export default function ANSRAssessment() {
       const bands = DK.map(k => { const v = sc[k]; return v <= 2.5 ? "C" : v <= 5 ? "Co" : v <= 7.5 ? "E" : "O"; }).join("/");
       const payload = { timestamp: new Date().toISOString(), name: userName, email, primary: profileData.prof.name, secondary: profileData.sec.name, sensory: profileData.sensory, alertness: sc.alertness, sensitivity: sc.sensitivity, vitality: sc.vitality, connection: sc.connection, performance: sc.performance, aliveness: sc.aliveness, average: Math.round(avg * 10) / 10, band_dist: bands, source: "ansr-profile", payment: "kajabi", token };
       fetch("https://hooks.zapier.com/hooks/catch/26745547/uxk9ayd/", { method: "POST", body: new URLSearchParams(payload).toString(), headers: { "Content-Type": "application/x-www-form-urlencoded" } }).catch(() => {});
-      fetch("https://web-production-305eb4.up.railway.app/generate-and-send", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: userName, email, primary: profileData.prof.key, secondary: profileData.sec.key, sensory: profileData.sensory, scores: profileData.scores, token }) }).catch(() => {});
+      // Railway call with retry — container may still be waking
+      const railPayload = JSON.stringify({ name: userName, email, primary: profileData.prof.key, secondary: profileData.sec.key, sensory: profileData.sensory, scores: profileData.scores, token });
+      const railUrl = "https://web-production-305eb4.up.railway.app/generate-and-send";
+      const railOpts = { method: "POST", headers: { "Content-Type": "application/json" }, body: railPayload };
+      fetch(railUrl, railOpts).then(r => { if (!r.ok) throw new Error(); }).catch(() => { setTimeout(() => fetch(railUrl, railOpts).catch(() => {}), 8000); });
     } catch (e) {}
   }, [userName]);
 
