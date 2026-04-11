@@ -7,7 +7,6 @@ const T = {
   bg: "#1A1714", accent: "#C4896A", accentBright: "#D4976F", text: "#F0E8DC", textMuted: "#B0A494", textDim: "#7A7068",
   border: "rgba(255,255,255,0.08)", warmWhite: "#FAF5EE", warmCharcoal: "#3A3530",
   accentSoft: "rgba(196,137,106,0.18)", accentGlow: "rgba(196,137,106,0.08)",
-  // Chapter glows — 30% stronger than original
   chapterGlow: [
     "rgba(100,130,180,0.06)",
     "rgba(196,137,106,0.07)",
@@ -19,13 +18,10 @@ const T = {
   f: {
     d: "'Cormorant Garamond', serif",
     b: "'EB Garamond', serif",
-    ui: "'DM Sans', sans-serif"  // Added: matches Pulse
+    ui: "'DM Sans', sans-serif"
   },
 };
 
-// ═══════════════════════════════════════
-// CHAPTERS
-// ═══════════════════════════════════════
 const CH = [
   { name:"Alertness", frame:"Your nervous system has a baseline state — a level of activation it returns to when nothing is happening. This chapter maps whether that baseline is calm, bracing, or stuck in survival mode." },
   { name:"Sensitivity", frame:"Sensitivity is the bandwidth of your experience — how much beauty, sensation, and feeling your nervous system allows through. This chapter maps what's still open and what's been turned down." },
@@ -35,11 +31,7 @@ const CH = [
   { name:"Aliveness", frame:"Everything the first five chapters describe converges here. This chapter asks the deepest question: does your life still feel like yours?" },
 ];
 
-// ═══════════════════════════════════════
-// 42 QUESTIONS — 4 are sensory (6 options, flagged)
-// ═══════════════════════════════════════
 const Q = [
-  // ─── CH0: ALERTNESS (7 questions) ───
   {c:0,t:"How do you breathe most of the day, honestly?",o:["I hold my breath more than I realise. Especially during tasks.","Steadily. My breathing feels natural and easy.","I don't know. I've never paid attention.","Shallow, high in my chest. I only notice when someone tells me to breathe."],s:["S","V","D","S"]},
   {c:0,t:"At night, when everything is quiet, what happens in your mind?",o:["It speeds up. The quiet makes the thoughts louder.","I fall asleep fast but wake at 3 or 4am with my mind already running","It fills with other people. What they need tomorrow, what I should have handled today, whether everyone is okay. My own thoughts come last.","It finally slows down. Silence is welcome."],s:["S","S","S","V"]},
   {c:0,t:"When was the last time your body fully let go? Not sleep, not vacation, but that feeling where nothing in you is bracing for anything?",o:["I honestly can't remember","Rarely. A moment here or there but it doesn't last.","This week. I know what that feels like.","I'm not sure what that would even feel like anymore"],s:["S","M","V","D"]},
@@ -47,8 +39,6 @@ const Q = [
   {c:0,t:"When you finish a demanding day and finally sit down, what does your body do?",o:["It vibrates. I'm still running even though I've stopped moving.","Everything I held back during the day arrives. Feelings, tension, the weight of things I absorbed from other people. Sitting down opens everything up.","It settles gradually. I can feel the transition from doing to being","Nothing changes. My body doesn't register the difference between on and off."],s:["S","M","V","D"]},
   {c:0,t:"What is your relationship with adrenaline right now?",o:["I manage it carefully. I activate when the situation demands it, but the effort of keeping everything contained is exhausting in a way nobody sees.","I'm drowning in it. My system is producing stress chemistry I can't switch off.","I don't feel it anymore. Even real emergencies don't produce the surge they used to.","I can access it when I need it and let it go when I don't"],s:["M","S","D","V"]},
   {c:0,t:"When was the last time you felt genuinely safe? Not protected, not defended, but safe in your body, with nothing to brace against?",o:["Recently. I know what safety feels like in my body.","On vacation or in a rare perfect moment. It exists but it's not daily.","I don't remember. I'm not sure my body knows the difference between stopping and collapsing.","It happens sometimes. And when it does, I notice how hungry I was for it."],s:["V","M","D","S"]},
-
-  // ─── CH1: SENSITIVITY (7 questions, Q13 = sensory S1-C) ───
   {c:1,t:"Has your intuition changed over the past few years?",o:["It's gotten quieter. I used to feel things clearly, now I second-guess everything.","It's still there but I override it constantly with logic and analysis","I can't tell the difference between intuition and anxiety anymore","It's sharp. I trust what I feel and it's usually right"],s:["D","M","S","V"]},
   {c:1,t:"Your sensitivity to people, to beauty, to the energy of a room. Is it a strength or something you've had to manage?",o:["A strength. It's one of the most valuable things about me","Both. It's powerful but overwhelming, so I've turned it down.","I used to see it as a strength. Now I'm not sure it's still there.","Something to manage. Feeling too much has always been a liability."],s:["V","M","D","S"]},
   {c:1,t:"Where do you get your energy hits right now, honestly?",o:["From intensity. Adrenaline, dopamine, something strong enough to cut through.","From being needed. When someone relies on me, when I can see that I'm making a difference for someone else, something in me activates.","From beauty, nature, meaningful conversations, sensory experiences","I don't get energy hits. I run on willpower and caffeine."],s:["S","S","V","D"]},
@@ -58,8 +48,6 @@ const Q = [
   {c:1,t:"When you are genuinely depleted, not tired from a long day, but deep-bone depleted, which of these becomes unbearable first?",sensory:true,
     o:["Light. Everything is too bright, too much visual information. You need darkness or soft light.","Noise. Sounds that are normally fine become piercing, voices grate. You need silence.","Temperature. You can't get comfortable, too hot or too cold. Your skin feels wrong.","Contact. Clothes feel abrasive, being touched is irritating. Physical contact is too much.","Smell. Ordinary scents become overpowering, food smells turn your stomach. Perfume is suffocating.","Nothing becomes unbearable. Everything just goes flat and grey"],
     s:["M","M","M","M","M","D"], sc:["V","A","M","S","O","D"]},
-
-  // ─── CH2: VITALITY (7 questions, Q16 = sensory S3) ───
   {c:2,t:"What is true about sound in your daily life?",o:["I use sound to manage myself. Podcasts, playlists, background noise.","Noise sharpens me at first, then exhausts me","I have access to silence or sounds that nourish me","Silence is rare and I miss it. My nervous system craves quiet."],s:["M","S","V","S"]},
   {c:2,t:"How do you rest?",o:["I collapse. Couch, screen, wine, numb out.","I have things that genuinely restore me. Movement, a walk, music, time in beauty.","I don't. I switch from work tasks to life tasks and call that a break","I try to rest but my body doesn't know how to receive it"],s:["D","V","S","S"]},
   {c:2,t:"When your body begins to settle after sustained stress, not when you decide to relax, but when your system finally lets go on its own, what is usually present?",sensory:true,
@@ -69,8 +57,6 @@ const Q = [
   {c:2,t:"Describe your sleep in one honest sentence.",o:["I sleep enough hours but wake up tired. Quantity without quality.","I sleep well. I fall asleep easily, stay asleep, and wake rested.","My sleep is broken. 3am wake-ups, racing thoughts, or I need substances.","I sleep like the dead and still wake exhausted"],s:["M","V","S","D"]},
   {c:2,t:"In the last year, has your body been sending you signals you've been ignoring?",o:["Yes. Multiple signals, and I know exactly what they mean but I haven't stopped","Yes. But I've disconnected so much I only notice when something forces me to stop.","My body feels balanced. Signals come and I attend to them.","Some. I'm learning to listen and respond before they escalate."],s:["S","D","V","M"]},
   {c:2,t:"Think of the last time you were in a truly beautiful place. What happened in your body?",o:["I softened. My breathing changed, my shoulders dropped, something let go","I noticed it was beautiful but my body stayed the same","I felt a pang, almost like grief, because the contrast with my daily life was so sharp.","I can't remember the last time I was somewhere truly beautiful"],s:["V","S","M","D"]},
-
-  // ─── CH3: CONNECTION (7 questions, Q27 = sensory S4) ───
   {c:3,t:"When things get tense with someone you care about, what does your body do?",o:["I stay present. I can hold tension without losing myself.","I shut down. I go quiet, I leave the room, or I agree just to end it.","I get sharp. My words become precise, controlled, designed to win.","I feel flooded. Emotion rises so fast I either explode or freeze."],s:["V","D","S","M"]},
   {c:3,t:"How are you at receiving? A compliment, a beautiful moment, help, being taken care of?",o:["It makes me uncomfortable. I'd rather be the one giving.","It doesn't land. People offer me things and I feel almost nothing.","I deflect. You didn't have to. It's nothing. I'm fine.","I let it in. Beauty, kindness, care. Receiving feels natural and good."],s:["S","D","S","V"]},
   {c:3,t:"Your body has a bracing pattern, a place it holds tension habitually, even at rest. Which do you recognise?",o:["Jaw and face. I clench, I grind at night, my expression is controlled.","Throat and chest. There's a tightness around my heart that never fully opens.","Stomach and gut. I carry a knot that food, stress, and emotion all tighten.","I don't hold a fixed pattern. My body moves through tension and releases it."],s:["S","S","S","V"]},
@@ -80,8 +66,6 @@ const Q = [
   {c:3,t:"Your nervous system carries a memory it may not have words for. Which of these descriptions produces the strongest physical response in your body, not the one you like best, but the one that makes something shift in your chest, your hands, or your breath?",sensory:true,
     o:["You are standing at a window at dawn. The sky is enormous. There is nothing between you and the horizon. The light is changing","A piece of music you haven't heard in years begins to play. The first four notes arrive and something inside you opens","You lower yourself into water that is exactly the right temperature. Your shoulders drop. The water holds your weight","Someone places a heavy hand on your shoulder. Steady. Warm. No words. Just weight. Your body exhales","You open a door and a scent you haven't encountered since childhood fills the room. Your whole body remembers before your mind can name what it is","None of these produced a noticeable physical response"],
     s:["M","M","M","M","M","D"], sc:["V","A","M","S","O","D"]},
-
-  // ─── CH4: PERFORMANCE (7 questions) ───
   {c:4,t:"When you arrive at work, or open your laptop, who shows up?",o:["The version of me that gets things done. She's not the real me but she's very good.","Me. I bring the same person to work that I bring everywhere else.","I don't notice a shift anymore. The work version has become the only version.","A more controlled version of me. I know the gap between who I am at work and who I am outside it. The gap has become so normal I barely notice it anymore."],s:["M","V","D","M"]},
   {c:4,t:"What drives your performance right now, honestly?",o:["Fear. Of falling behind, being found out, losing what I've built.","Responsibility. People depend on me. I show up because I cannot let them down, regardless of what it costs me.","Standards. I can't tolerate mediocrity, especially from myself.","Purpose. I believe in what I'm doing and it energises me."],s:["S","S","S","V"]},
   {c:4,t:"What has your career cost you that you don't talk about?",o:["My ability to enjoy things. I can still perform, but pleasure, beauty, and the experience of actually being alive have gone quiet.","My health. My body is carrying the bill for my ambition.","Nothing I regret. The life I've built reflects who I am.","Myself. I've become someone I respect but don't fully recognise."],s:["D","S","V","D"]},
@@ -89,8 +73,6 @@ const Q = [
   {c:4,t:"Beneath the pressure, there is a version of your work that you once loved. Can you still feel her?",o:["I still love the actual work. What I have lost is the love for everything that surrounds it: the politics, the management, the scale.","Yes. I still love what I do when I can do it at my own rhythm.","I've replaced love with discipline. Excellent at what I do but I stopped loving it.","I can't feel anything about my work anymore. It's just what I do."],s:["M","V","S","D"]},
   {c:4,t:"If your title, your role, and your responsibilities were removed tomorrow, who would you be?",o:["I don't know. I cannot picture myself without my professional identity.","I'd be terrified. My identity is built on what I do, not who I am.","I'd be relieved. There's a whole person underneath that's been waiting.","I'd be lost at first, then curious. I sense there's someone in there."],s:["D","S","V","M"]},
   {c:4,t:"The pace you're running at right now. Is it yours?",o:["It's mine. I chose this pace and I can change it.","It was set years ago and I've never questioned it. Until now.","I set it myself. And I set it too high. But slowing down feels like it would betray everything I have built.","There is no pace. There's just constant, undifferentiated acceleration."],s:["V","M","S","S"]},
-
-  // ─── CH5: ALIVENESS (7 questions, Q40 = sensory S2-A) ───
   {c:5,t:"When you look in the mirror, not at your face, but at your life, do you recognise the woman who built it?",o:["I recognise her but I don't like what it cost her to get here","I recognise her but she feels far away. Like someone I used to know.","I don't know who I'm looking at anymore","Yes. This life is mine and I feel it."],s:["S","M","D","V"]},
   {c:5,t:"What do you want right now? Not what you should want. What does the deepest part of you actually want?",o:["I want permission to stop. To not be strong for one day.","I know exactly what I want. And I'm moving toward it.","I know what I want. I just don't see how to get there without dismantling everything I have built around other people.","I want to feel something again. Anything real."],s:["S","V","M","D"]},
   {c:5,t:"What is the most beautiful thing about you that has nothing to do with your achievements?",o:["My strength. I've carried more than most people could imagine.","My sensitivity. Even when it's muted, it's what makes me extraordinary.","My depth. I feel and think at a level most people never access.","I find it difficult to answer this question. Not because nothing comes to mind, but because I am not used to thinking about myself outside of what I produce."],s:["S","M","V","D"]},
@@ -102,9 +84,6 @@ const Q = [
   {c:5,t:"Right now, after everything you've just reflected on, what is your nervous system asking for?",o:["Permission. To slow down, to feel, to stop performing.","Beauty. Something that reaches past the walls and reminds me I'm alive.","Nothing. I feel at peace with where I am.","I can hear it. I have been hearing it for a while. I just have not been able to give myself what it is asking for."],s:["S","M","V","M"],final:true},
 ];
 
-// ═══════════════════════════════════════
-// SCORING — DO NOT MODIFY
-// ═══════════════════════════════════════
 const SM = { V: 3, A: 2.5, M: 2, S: 1, O: 1.5, D: 0.5 };
 const DK = ["alertness","sensitivity","vitality","connection","performance","aliveness"];
 const DLL = ["Alertness","Sensitivity","Vitality","Connection","Performance","Aliveness"];
@@ -135,9 +114,6 @@ function calcSensoryFromPicks(picks) {
   return "D";
 }
 
-// ═══════════════════════════════════════
-// PROFILES — DO NOT MODIFY
-// ═══════════════════════════════════════
 const PR = {
   sunfire: { key: "sunfire", name: "Sunfire", tag: "Burns magnificent and unsustainable.", color: "#D4845A",
     desc: "Your nervous system is locked in activation. You perform at extraordinary levels but your body never comes down. Rest feels like failure. Stillness triggers anxiety.\n\nThe fire is real and extraordinary. People are drawn to your energy, your decisiveness. But the fire has been consuming its own fuel. Your body has been borrowing from tomorrow to pay for today.\n\nWhat looks like ambition is actually a nervous system that only feels safe when it's producing. Achievement has become your last remaining source of feeling alive.",
@@ -159,9 +135,6 @@ const PR = {
     hope: "What's stirring in you is not a crisis. It's an emergence. Don't turn the awakening into a to-do list. Let your nervous system show you the pace." },
 };
 
-// ═══════════════════════════════════════
-// SENSORY CHANNEL DATA
-// ═══════════════════════════════════════
 const SENSORY = {
   V: { name: "Light & Space", desc: "Your nervous system finds its way back through visual openness — horizons, natural light, uncluttered space." },
   A: { name: "Sound & Voice", desc: "Your nervous system regulates through auditory input — music, prosody, silence, the human voice at specific frequencies." },
@@ -171,9 +144,6 @@ const SENSORY = {
   D: { name: "Signal Lost", desc: "Your nervous system doesn't currently have a reliable sensory channel for regulation. The channels are dormant, not broken." },
 };
 
-// ═══════════════════════════════════════
-// PROFILE ASSIGNMENT — DO NOT MODIFY
-// ═══════════════════════════════════════
 function assignProfile(s) {
   const avg = DK.reduce((sum, k) => sum + s[k], 0) / 6;
   const vals = DK.map(k => s[k]);
@@ -231,7 +201,6 @@ const REFPATTERNS = {
   newmoon: { alertness: 5.0, sensitivity: 6.0, vitality: 5.5, connection: 4.0, performance: 5.0, aliveness: 7.0 },
 };
 
-// Dimension insights
 const gB = sc => sc <= 2.5 ? "Contracted" : sc <= 5 ? "Compressed" : sc <= 7.5 ? "Emerging" : "Open";
 const INSIGHTS = {
   alertness: { Contracted: "Your nervous system is in survival mode. The activation has become your baseline.", Compressed: "Your system runs hot but controlled. You never fully leave pressure mode.", Emerging: "Your system can find calm — but it takes effort. The capacity is returning.", Open: "Your alertness is well-regulated. You activate when needed and return to baseline naturally." },
@@ -242,7 +211,6 @@ const INSIGHTS = {
   aliveness: { Contracted: "Joy, desire, beauty, purpose — gone quiet. You function but don't feel alive.", Compressed: "Aliveness visits in flashes — a sunset, a conversation, a rare moment of stillness.", Emerging: "Something is stirring. Your system is beginning to remember what it turned off.", Open: "You feel alive. Beauty moves you. Joy arrives without needing achievement to justify it." },
 };
 
-// Matched practices
 const PRACTICES = {
   sunfire: [
     { n: "The Extended Exhale", d: "In 4, out 8. This ratio activates the vagal brake. Two minutes before sleep." },
@@ -277,7 +245,7 @@ const PRACTICES = {
 };
 
 // ═══════════════════════════════════════
-// COMPONENT — Upgraded design
+// COMPONENT — WITH EMAIL CAPTURE FIX
 // ═══════════════════════════════════════
 export default function ANSRAssessment() {
   const [scr, setScr] = useState("welcome");
@@ -291,10 +259,10 @@ export default function ANSRAssessment() {
   const [sensoryType, setSensoryType] = useState("D");
   const [sensoryPicks, setSensoryPicks] = useState([]);
   const [userName, setUserName] = useState("");
+  const [emailAddr, setEmailAddr] = useState("");
   const [accessDenied, setAccessDenied] = useState(false);
-  const [saved, setSaved] = useState(false); // Upgrade 6: progress saved indicator
+  const [saved, setSaved] = useState(false);
 
-  // Answer randomization — seeded per session
   const [sessionSeed] = useState(() => Math.floor(Math.random() * 10000));
   const shuffledOrders = useMemo(() => {
     function seededShuffle(arr, seed) {
@@ -305,13 +273,14 @@ export default function ANSRAssessment() {
     return Q.map((q, qi) => seededShuffle(q.o.map((_, i) => i), sessionSeed + qi * 137));
   }, [sessionSeed]);
 
-  // XSS + token check
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
       const rawName = params.get("name") || "";
       const clean = rawName.replace(/<[^>]*>/g, "").replace(/[<>"'&]/g, "").replace(/[\n\r\t]/g, " ").trim().slice(0, 100);
       setUserName(clean || "");
+      const emailParam = params.get("email") || "";
+      setEmailAddr(emailParam);
       const token = params.get("t");
       const host = window.location.hostname || "";
       const isDev = host === "localhost" || host === "127.0.0.1" || !window.location.search || host.includes("claude.ai") || host.includes("anthropic") || host.includes("vercel.app") || window.self !== window.top;
@@ -319,7 +288,6 @@ export default function ANSRAssessment() {
     } catch (e) {}
   }, []);
 
-  // localStorage save/resume
   useEffect(() => {
     try {
       const s = localStorage.getItem("ansr_profile_progress");
@@ -330,7 +298,6 @@ export default function ANSRAssessment() {
   useEffect(() => {
     if (ans.length > 0 && ans.length < 42) {
       try { localStorage.setItem("ansr_profile_progress", JSON.stringify({ ans, qi, ch, cqi, sensoryPicks })); } catch (e) {}
-      // Upgrade 6: show "Progress saved" briefly
       setSaved(true);
       const t = setTimeout(() => setSaved(false), 1500);
       return () => clearTimeout(t);
@@ -338,14 +305,12 @@ export default function ANSRAssessment() {
     if (ans.length >= 42) { try { localStorage.removeItem("ansr_profile_progress"); } catch (e) {} }
   }, [ans, qi, ch, cqi, sensoryPicks]);
 
-  // Preload jsPDF at chapter 4
   useEffect(() => {
     if (ch >= 3 && typeof window !== "undefined" && !window.jspdf) {
       const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"; s.async = true; document.head.appendChild(s);
     }
   }, [ch]);
 
-  // Wake up Railway at chapter 3 — container sleeps after inactivity, needs ~10s to start
   useEffect(() => {
     if (ch >= 3 && typeof window !== "undefined" && !window._railwayWoken) {
       window._railwayWoken = true;
@@ -370,11 +335,11 @@ export default function ANSRAssessment() {
           const finalPicks = sensoryCh ? [...sensoryPicks, sensoryCh] : sensoryPicks;
           setSensoryType(calcSensoryFromPicks(finalPicks));
         } catch (e) { console.error(e); }
-        setScr("gen");
+        if (emailAddr) { setScr("gen"); } else { setScr("emailcapture"); }
       } else { setScr("breath"); }
     } else { setCqi(cqi + 1); }
     setQi(qi + 1); setTappedIdx(-1);
-  }, [ans, sensoryPicks, isLast, ch, cqi, qi]);
+  }, [ans, sensoryPicks, isLast, ch, cqi, qi, emailAddr]);
 
   const onBack = useCallback(() => {
     if (cqi > 0) {
@@ -387,32 +352,27 @@ export default function ANSRAssessment() {
 
   const nextCh = useCallback(() => { setCh(ch + 1); setCqi(0); setScr("chcard"); }, [ch]);
 
-  // Webhook
   const sendWebhook = useCallback((profileData) => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const email = params.get("email") || "";
+      const email = emailAddr;
       const token = params.get("t") || "";
       const sc = profileData.scores;
       const avg = DK.reduce((s, k) => s + sc[k], 0) / 6;
       const bands = DK.map(k => { const v = sc[k]; return v <= 2.5 ? "C" : v <= 5 ? "Co" : v <= 7.5 ? "E" : "O"; }).join("/");
       const payload = { timestamp: new Date().toISOString(), name: userName, email, primary: profileData.prof.name, secondary: profileData.sec.name, sensory: profileData.sensory, alertness: sc.alertness, sensitivity: sc.sensitivity, vitality: sc.vitality, connection: sc.connection, performance: sc.performance, aliveness: sc.aliveness, average: Math.round(avg * 10) / 10, band_dist: bands, source: "ansr-profile", payment: "kajabi", token };
       fetch("https://hooks.zapier.com/hooks/catch/26745547/uxk9ayd/", { method: "POST", body: new URLSearchParams(payload).toString(), headers: { "Content-Type": "application/x-www-form-urlencoded" } }).catch(() => {});
-      // Railway call with retry — container may still be waking
       const railPayload = JSON.stringify({ name: userName, email, primary: profileData.prof.key, secondary: profileData.sec.key, sensory: profileData.sensory, scores: profileData.scores, token });
       const railUrl = "https://web-production-305eb4.up.railway.app/generate-and-send";
       const railOpts = { method: "POST", headers: { "Content-Type": "application/json" }, body: railPayload };
       fetch(railUrl, railOpts).then(r => { if (!r.ok) throw new Error(); }).catch(() => { setTimeout(() => fetch(railUrl, railOpts).catch(() => {}), 8000); });
     } catch (e) {}
-  }, [userName]);
+  }, [userName, emailAddr]);
 
   useEffect(() => {
     if (scr === "results" && prof && sec && scores) sendWebhook({ prof, sec, sensory: sensoryType, scores });
   }, [scr, prof, sec, scores, sensoryType, sendWebhook]);
 
-  // ═══════════════════════════════════════
-  // BREATHING TRANSITION — ELIA orbit (matches Pulse)
-  // ═══════════════════════════════════════
   const Breath = ({ onDone }) => {
     const [op, setOp] = useState(0);
     const [deg, setDeg] = useState(0);
@@ -438,9 +398,6 @@ export default function ANSRAssessment() {
     );
   };
 
-  // ═══════════════════════════════════════
-  // GENERATION SCREEN — orbit → profile reveal → chime
-  // ═══════════════════════════════════════
   const Gen = ({ onDone }) => {
     const [ph, setPh] = useState(0);
     const [deg, setDeg] = useState(0);
@@ -487,9 +444,6 @@ export default function ANSRAssessment() {
     );
   };
 
-  // ═══════════════════════════════════════
-  // RENDER
-  // ═══════════════════════════════════════
   const sensoryData = SENSORY[sensoryType] || SENSORY.D;
 
   return (
@@ -497,17 +451,12 @@ export default function ANSRAssessment() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
-      {/* Noise texture */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", opacity: 0.035, zIndex: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: "200px 200px" }} />
-      {/* Chapter ambient glow — Upgrade 5: stronger */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 0, background: `radial-gradient(ellipse at 50% 40%, ${T.chapterGlow[ch]}, transparent 70%)`, transition: "background 2s ease" }} />
-
-      {/* Upgrade 6: Progress saved indicator */}
       <div style={{ position: "fixed", top: 20, right: 20, zIndex: 100, fontFamily: T.f.ui, fontSize: 11, color: T.accent, letterSpacing: "0.08em", opacity: saved ? 0.7 : 0, transition: "opacity 0.5s ease", pointerEvents: "none" }}>Progress saved</div>
 
       <div style={{ position: "relative", zIndex: 1 }}>
 
-        {/* ACCESS DENIED */}
         {accessDenied && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 440 }}>
@@ -519,7 +468,6 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* RESUME */}
         {scr === "resume" && !accessDenied && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 440 }}>
@@ -534,11 +482,9 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* WELCOME — The Aman lobby moment */}
         {!accessDenied && scr === "welcome" && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px", animation: "fadeIn 1.8s ease" }}>
             <div style={{ textAlign: "center", maxWidth: 480 }}>
-              {/* Orbit motif */}
               <div style={{ position: "relative", width: 120, height: 120, margin: "0 auto 48px" }}>
                 <div style={{ position: "absolute", inset: 0, borderRadius: "50%", border: `1px solid ${T.accent}`, opacity: 0.15 }} />
                 <div style={{ position: "absolute", inset: "18%", borderRadius: "50%", border: `1px solid ${T.accent}`, opacity: 0.25 }} />
@@ -558,7 +504,6 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* INTENTION */}
         {scr === "intention" && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 460 }}>
@@ -573,7 +518,6 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* CHAPTER CARD */}
         {scr === "chcard" && (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
             <div style={{ textAlign: "center", maxWidth: 480 }}>
@@ -587,15 +531,12 @@ export default function ANSRAssessment() {
           </div>
         )}
 
-        {/* QUESTIONS — Upgraded with ELIA logo, progress dots, chapter counter, DM Sans buttons */}
         {scr === "q" && curQ && (() => {
           const globalIdx = ch * 7 + cqi;
           const order = shuffledOrders[globalIdx] || curQ.o.map((_, i) => i);
           return (
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "100vh", padding: curQ.final ? "60px 24px" : "48px 24px", maxWidth: 580, margin: "0 auto" }}>
-            {/* ELIA logo — prominent, ivory */}
             <p style={{ fontFamily: T.f.d, fontSize: 28, fontWeight: 400, color: "#F0E8DC", letterSpacing: "0.35em", textAlign: "center", marginBottom: 32 }}>ELIA</p>
-            {/* Chapter counter — visible ivory */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 {cqi > 0 && (<button onClick={onBack} style={{ background: "none", border: "none", color: T.textDim, cursor: "pointer", fontFamily: T.f.b, fontSize: 13, padding: "4px 0", transition: "color 0.3s ease" }} onMouseEnter={(e) => { e.target.style.color = T.accent; }} onMouseLeave={(e) => { e.target.style.color = T.textDim; }}>←</button>)}
@@ -603,12 +544,10 @@ export default function ANSRAssessment() {
               </div>
               <span style={{ fontFamily: T.f.ui, fontSize: 12, color: "#F0E8DC", letterSpacing: "0.08em", opacity: 0.7 }}>Chapter {ch + 1} of 6</span>
             </div>
-            {/* Progress dots within chapter */}
             <div style={{ display: "flex", gap: 6, marginBottom: 6, justifyContent: "center" }}>
               {Array.from({ length: chQ.length }, (_, i) => (<div key={i} style={{ width: i <= cqi ? 18 : 8, height: 2, background: i <= cqi ? T.accent : "rgba(255,255,255,0.1)", borderRadius: 1, transition: "all 0.5s ease" }} />))}
             </div>
             <h2 style={{ fontFamily: T.f.b, fontSize: curQ.final ? 26 : curQ.sensory ? 20 : 22, fontWeight: 400, color: T.text, lineHeight: 1.7, margin: curQ.final ? "36px 0 40px" : "28px 0 28px", fontStyle: "italic" }}>{curQ.t}</h2>
-            {/* DM Sans answer buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: curQ.sensory ? 8 : 10 }}>
               {order.map((origIdx) => (
                 <button key={origIdx}
@@ -627,20 +566,52 @@ export default function ANSRAssessment() {
                 >{curQ.o[origIdx]}</button>
               ))}
             </div>
-            {/* Her name — quiet, personal */}
             {userName && !curQ.final && (
               <p style={{ fontFamily: T.f.d, fontSize: 13, color: T.accent, letterSpacing: "0.15em", textAlign: "center", marginTop: 36, opacity: 0.35 }}>{userName.split(" ")[0]}'s ANSR Profile</p>
             )}
           </div>);
         })()}
 
-        {/* BREATHING TRANSITION */}
+        {scr === "emailcapture" && (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "48px 24px" }}>
+            <div style={{ textAlign: "center", maxWidth: 420 }}>
+              <p style={{ fontFamily: T.f.d, fontSize: 28, fontWeight: 400, color: T.text, letterSpacing: "0.35em", marginBottom: 40 }}>ELIA</p>
+              <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 32px", opacity: 0.4 }} />
+              <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 300, color: T.text, letterSpacing: "0.04em", marginBottom: 8 }}>Your ANSR <span style={{ color: T.accent }}>Profile</span> is ready</p>
+              <div style={{ width: 30, height: 1, background: T.accent, margin: "0 auto 24px", opacity: 0.4 }} />
+              <p style={{ fontFamily: T.f.b, fontSize: 15, color: T.textMuted, fontStyle: "italic", lineHeight: 1.7, marginBottom: 32 }}>Enter your email to receive your 14-page report.</p>
+              <input type="email" placeholder="Your email" id="ansr-email-input"
+                style={{ fontFamily: T.f.b, fontSize: 15, background: T.warmWhite, border: "1px solid rgba(220,215,200,0.4)", color: T.warmCharcoal, padding: "15px 16px", width: "100%", outline: "none", boxSizing: "border-box", borderRadius: 3, textAlign: "center" }}
+                onFocus={(e) => { e.target.style.borderColor = T.accent; }}
+                onBlur={(e) => { e.target.style.borderColor = "rgba(220,215,200,0.4)"; }}
+              />
+              {!userName && (
+                <input type="text" placeholder="Your first name" id="ansr-name-input"
+                  style={{ fontFamily: T.f.b, fontSize: 15, background: T.warmWhite, border: "1px solid rgba(220,215,200,0.4)", color: T.warmCharcoal, padding: "15px 16px", width: "100%", outline: "none", boxSizing: "border-box", borderRadius: 3, textAlign: "center", marginTop: 12 }}
+                  onFocus={(e) => { e.target.style.borderColor = T.accent; }}
+                  onBlur={(e) => { e.target.style.borderColor = "rgba(220,215,200,0.4)"; }}
+                />
+              )}
+              <button onClick={() => {
+                const emailInp = document.getElementById("ansr-email-input");
+                const nameInp = document.getElementById("ansr-name-input");
+                const emailVal = emailInp ? emailInp.value.trim() : "";
+                const nameVal = nameInp ? nameInp.value.trim() : "";
+                if (emailVal && emailVal.includes("@")) {
+                  setEmailAddr(emailVal);
+                  if (nameVal && !userName) setUserName(nameVal);
+                  setScr("gen");
+                }
+              }} style={{ fontFamily: T.f.d, fontSize: 15, letterSpacing: "0.12em", textTransform: "uppercase", background: T.accent, border: "none", color: "#FFFFFF", padding: "15px 40px", cursor: "pointer", width: "100%", borderRadius: 2, marginTop: 16 }}>See My Profile</button>
+              <p style={{ fontFamily: T.f.b, fontSize: 12, color: T.textDim, marginTop: 20 }}>Your report will be sent to this address. We don't share it. Ever.</p>
+            </div>
+          </div>
+        )}
+
         {scr === "breath" && <Breath onDone={nextCh} />}
 
-        {/* GENERATION */}
         {scr === "gen" && <Gen onDone={() => setScr("results")} />}
 
-        {/* RESULTS — Full profile report */}
         {scr === "results" && prof && scores && (
           <div style={{ padding: "48px 24px 80px", maxWidth: 600, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -665,7 +636,6 @@ export default function ANSRAssessment() {
             <div style={{ borderLeft: `2px solid ${prof.color}`, paddingLeft: 24, textAlign: "left", marginBottom: 52 }}>
               <p style={{ fontFamily: T.f.b, fontSize: 17, color: T.text, lineHeight: 1.95, fontStyle: "italic" }}>{prof.hope}</p>
             </div>
-            {/* Radar Chart */}
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <p style={{ fontFamily: T.f.d, fontSize: 22, fontWeight: 300, color: T.text, letterSpacing: "0.08em", marginBottom: 16 }}>{userName ? `${userName}'s` : "Your"} ANSR Map</p>
               <svg viewBox="-10 -10 420 400" style={{ width: "100%", maxWidth: 440, margin: "0 auto", display: "block" }}>
@@ -693,7 +663,6 @@ export default function ANSRAssessment() {
                 </div>}
               </div>
             </div>
-            {/* Six Dimensions */}
             <div style={{ marginBottom: 56 }}>
               <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 300, color: T.text, letterSpacing: "0.08em", marginBottom: 36 }}>Six Dimensions</p>
               {[...DK].sort((a, b) => scores[b] - scores[a]).map((dim) => {
@@ -713,13 +682,11 @@ export default function ANSRAssessment() {
                 );
               })}
             </div>
-            {/* Sensory Signature */}
             <div style={{ marginBottom: 48 }}>
               <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 300, color: T.text, letterSpacing: "0.08em", marginBottom: 20 }}>Your Sensory Signature</p>
               <p style={{ fontFamily: T.f.d, fontSize: 34, fontWeight: 300, color: T.text, marginBottom: 18 }}>{sensoryData.name}</p>
               <p style={{ fontFamily: T.f.b, fontSize: 16, color: T.text, lineHeight: 1.9, marginBottom: 28, opacity: 0.7 }}>{sensoryData.desc}</p>
             </div>
-            {/* Practices */}
             <div style={{ marginBottom: 48 }}>
               <p style={{ fontFamily: T.f.d, fontSize: 24, fontWeight: 300, color: T.text, letterSpacing: "0.08em", marginBottom: 32 }}>Your Restoration Path</p>
               {(PRACTICES[prof.key] || PRACTICES.newmoon).map((p, i) => (
@@ -729,18 +696,15 @@ export default function ANSRAssessment() {
                 </div>
               ))}
             </div>
-            {/* PDF notice */}
             <div style={{ background: T.accentGlow, border: `1px solid ${T.accentSoft}`, padding: "32px 24px", textAlign: "center", borderRadius: 3, marginBottom: 48 }}>
               <p style={{ fontFamily: T.f.d, fontSize: 20, fontWeight: 300, color: T.text, marginBottom: 12 }}>Your 14-Page PDF Report</p>
               <p style={{ fontFamily: T.f.b, fontSize: 13, color: T.textMuted, lineHeight: 1.7, marginBottom: 8 }}>Full dual-profile analysis · Dimension insights · Sensory signature · Restoration practices</p>
               <p style={{ fontFamily: T.f.b, fontSize: 12, color: T.accent, fontStyle: "italic" }}>Arriving in your inbox now</p>
             </div>
-            {/* Closing */}
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div style={{ width: 32, height: 1, background: T.accent, margin: "0 auto 32px", opacity: 0.25 }} />
               <p style={{ fontFamily: T.f.b, fontSize: 16, color: T.text, fontStyle: "italic", opacity: 0.55, lineHeight: 1.8 }}>Your nervous system found its way here. That matters.</p>
             </div>
-            {/* Footer */}
             <div style={{ textAlign: "center", paddingTop: 40, borderTop: `1px solid ${T.border}` }}>
               <p style={{ fontFamily: T.f.d, fontSize: 20, fontWeight: 400, color: T.text, letterSpacing: "0.15em", marginBottom: 4 }}>ELIA</p>
               <p style={{ fontFamily: T.f.b, fontSize: 11, color: T.textMuted, fontStyle: "italic", marginBottom: 16 }}>Beauty That Heals</p>
