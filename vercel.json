@@ -1,7 +1,15 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
   "rewrites": [
-    { "source": "/delivery", "destination": "/" },
-    { "source": "/assessment", "destination": "/" },
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/velvetblade", "destination": "/index.html" },
+    { "source": "/heartwood", "destination": "/index.html" },
+    { "source": "/eclipse", "destination": "/index.html" },
+    { "source": "/sunfire", "destination": "/index.html" },
+    { "source": "/summerstorm", "destination": "/index.html" },
+    { "source": "/newmoon", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
