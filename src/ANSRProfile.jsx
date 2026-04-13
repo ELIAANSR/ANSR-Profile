@@ -169,7 +169,7 @@ function ProfileLP() {
 
   const primary = useMemo(() => {
     if (typeof window === "undefined") return null;
-    const k = new URLSearchParams(window.location.search).get("p");
+    const k = new URLSearchParams(window.location.search).get("p") || window.location.pathname.replace(/^\//, "").toLowerCase();
     return k && PROFILES[k] ? PROFILES[k] : null;
   }, []);
 
